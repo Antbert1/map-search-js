@@ -89,11 +89,32 @@ function initAutocomplete() {
             position: place.geometry.location
           })
 
-          google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-              'Place ID: ' + place.place_id + '<br>' +
-              place.formatted_address + '</div>');
-            infowindow.open(map, this);
+          google.maps.event.addListener(marker, 'click', function(event) {
+            var request = {
+                placeId: place.place_id,
+                fields: ['name', 'rating', 'formatted_phone_number', 'geometry']
+              };
+
+              service = new google.maps.places.PlacesService(map);
+              service.getDetails(request, callback);
+
+              
+              function callback(place, status) {
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                    'Name: ' + place.name + '<br>' +
+                    place.formatted_phone_number + '</div>');
+                    infowindow.setPosition(event.latLng);
+                    infowindow.open(map);                 
+                }
+              }
+
+              function showInfo(place) {
+
+              }
+
+              
+            
           });
         // Create a marker for each place.
         markers.push(marker);
