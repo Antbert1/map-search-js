@@ -6,6 +6,7 @@
 // parameter when you first load the API. For example:
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
+
 function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 55.954093, lng: -3.188200},
@@ -16,7 +17,7 @@ function initAutocomplete() {
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
   
     // Bias the SearchBox results towards current map's viewport.
     map.addListener('bounds_changed', function() {
@@ -24,7 +25,17 @@ function initAutocomplete() {
     });
 
 
-
+    /*List clicking*/
+    $( ".listItem" ).click(function() {
+      
+      var searchTerm = this.innerText;
+      $(input).val(searchTerm);
+      google.maps.event.trigger(input, 'focus', {});
+      google.maps.event.trigger(input, 'keydown', { keyCode: 13 });
+      google.maps.event.trigger(this, 'focus', {});
+      //searchMap(searchTerm);
+      
+    }); 
 
     var infowindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(map);
@@ -52,7 +63,13 @@ function initAutocomplete() {
     var markers = [];
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
-    searchBox.addListener('places_changed', function() {
+
+
+
+    searchBox.addListener('places_changed', searchMap.bind(this, "textBox"));
+
+    function searchMap(test) {
+      debugger;
       var places = searchBox.getPlaces();
   
       if (places.length == 0) {
@@ -92,7 +109,7 @@ function initAutocomplete() {
           google.maps.event.addListener(marker, 'click', function(event) {
             var request = {
                 placeId: place.place_id,
-                fields: ['name', 'rating', 'formatted_phone_number', 'geometry']
+                fields: ['name', 'rating', 'formatted_phone_number', 'website']
               };
 
               service = new google.maps.places.PlacesService(map);
@@ -103,10 +120,12 @@ function initAutocomplete() {
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
                     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
                     'Name: ' + place.name + '<br>' +
+                    'Website: ' + place.website + '<br>' +
                     place.formatted_phone_number + '</div>');
                     infowindow.setPosition(event.latLng);
                     infowindow.open(map);                 
                 }
+                $('.resourceName').text(place.name);
               }
 
               function showInfo(place) {
@@ -131,5 +150,5 @@ function initAutocomplete() {
 
 
       map.fitBounds(bounds);
-    });
+    }
   }

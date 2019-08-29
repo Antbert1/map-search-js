@@ -83,3 +83,7 @@
   .map-container {
       height: 400px;
   }
+
+  .listRow {
+    margin-top: 60px;
+  }
