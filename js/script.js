@@ -17,17 +17,27 @@ function initAutocomplete() {
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
+
+    var defaultBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(56.013428, -3.393450),
+      new google.maps.LatLng(55.866235, -2.962197));
+    
+    //searchBox.setBounds(defaultBounds);
     //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
   
     // Bias the SearchBox results towards current map's viewport.
     map.addListener('bounds_changed', function() {
+      searchBox.setBounds(defaultBounds);
       searchBox.setBounds(map.getBounds());
     });
 
 
     /*List clicking*/
     $( ".listItem" ).click(function() {
-      
+      $('.listItem').removeClass('highlighted');
+      $(this).addClass('highlighted');
+      $('.itemDetails').addClass('hidden');
+      $('.placeholder').removeClass('hidden');
       searchTerm = this.innerText;
       $(input).val(searchTerm);
       google.maps.event.trigger(input, 'focus', {});
@@ -87,11 +97,23 @@ function initAutocomplete() {
 
       var iconToUse;
       switch(searchTerm) {
-        case "Homeless":
+        case "Homelessness":
           iconToUse = "./images/house.png";
           break;
-        case "Women's Shelter":
+        case "Women's Services":
           iconToUse = "./images/women.png";
+          break;
+        case "Food Banks":
+          iconToUse = "./images/food.png";
+          break;
+        case "Advice and Employment":
+          iconToUse = "./images/employment.png";
+          break;
+        case "Community Services":
+          iconToUse = "./images/community.png";
+          break;
+        case "Health and Counselling":
+          iconToUse = "./images/health.png";
           break;
         default:
           iconToUse = "./images/testIcon.png";
@@ -119,9 +141,11 @@ function initAutocomplete() {
           })
 
           google.maps.event.addListener(marker, 'click', function(event) {
+            $('.itemDetails').removeClass('hidden');
+            $('.placeholder').addClass('hidden');
             var request = {
                 placeId: place.place_id,
-                fields: ['name', 'rating', 'formatted_phone_number', 'website']
+                fields: ['name', 'rating', 'formatted_phone_number', 'website', 'formatted_address']
               };
 
               service = new google.maps.places.PlacesService(map);
@@ -137,7 +161,21 @@ function initAutocomplete() {
                     infowindow.setPosition(event.latLng);
                     infowindow.open(map);                 
                 }
+                $('.name').text("Name: ");
                 $('.resourceName').text(place.name);
+                if (place.formatted_address.length > 0) {
+                  $('.address').text("Address: ");
+                  $('.resourceAddress').text(place.formatted_address);
+                }
+                if (place.formatted_phone_number.length > 0) {
+                  $('.number').text("Phone Number: ");
+                  $('.resourceNumber').text(place.formatted_phone_number);
+                }
+                if (place.website.length > 0) {
+                  $('.website').text("Website: ");
+                  $('.resourceWebsite').text(place.website);
+                  $('.resourceWebsite').attr("href", place.website);
+                }
               }
 
               function showInfo(place) {

@@ -63,6 +63,7 @@
     padding: 0 11px 0 13px;
     text-overflow: ellipsis;
     width: 400px;
+    visibility: hidden;
   }
   
   #pac-input:focus {
@@ -86,4 +87,52 @@
 
   .listRow {
     margin-top: 60px;
+  }
+
+  .headerBanner {
+    background: #5e83a1;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  .servicesBox {
+    -webkit-box-shadow: 0 15px 10px #777;
+    -moz-box-shadow: 0 15px 10px #777;
+    box-shadow: 0 15px 10px #777;
+  }
+  .serviceList {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .servicesBoxHeading h3 {
+    background: #5e83a1;
+    color: white;
+    padding: 10px;
+  }
+
+  .servicesBoxHeading p {
+    padding: 10px;
+  }
+
+  .listItem {
+    background: rgb(219, 219, 219);
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .odd {
+    background: rgb(243,243,243);
+  }
+
+  .highlighted {
+    font-weight: 600;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .titleBold {
+    font-weight: 600;
   }

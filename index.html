@@ -7,10 +7,18 @@
         </head>
 
         <body>
+            <div class="section headerBanner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>Services</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 map-container">
-                        Maps
                         <div id="map"></div>
                         
                         <input id="pac-input" class="controls" type="text" placeholder="Search Box">
@@ -19,15 +27,38 @@
                 </div>
                 <div class="row listRow">
                     <div class="col-md-6">
-                        <ul>
-                            <li class="listItem">Homeless</li>
-                            <li class="listItem">Food Bank</li>
-                            <li class="listItem">Women's Shelter</li>
-                        </ul>
+                        <div class="servicesBox">
+                            <div class="servicesBoxHeading">
+                                <h3>Available Services</h3>
+                                <p>Click on a service in the list below to see locations nearby on the map.</p>
+                            </div>
+                            <ul class="serviceList">
+                                <li class="listItem odd">Food Banks</li>
+                                <li class="listItem">Homelessness</li>
+                                <li class="listItem odd">Women's Services</li>
+                                <li class="listItem">Advice and Employment</li>
+                                <li class="listItem odd">Community Services</li>
+                                <li class="listItem">Health and Counselling</li>
+                            </ul>
+                        </div>
+
                     </div>
                     <div class="col-md-6">
-                        <div class="name">
-                            Name: <span class="resourceName"></span>
+                        <p class="placeholder">Click on map icons to show details</p>
+                        <div class="itemDetails hidden">
+                            <p>
+                               <span class="name titleBold"></span><span class="resourceName"></span>
+                            </p>
+                            <p>
+                               <span class="address titleBold"></span><span class="resourceAddress"></span>
+                            </p>
+                            <p>
+                                <span class="number titleBold"></span><span class="resourceNumber"></span>
+                            </p>
+                            <p>
+                                <span class="website titleBold"></span><a class="resourceWebsite" target="_blank"></a></span>
+                            </p>
+                            
                         </div>
                     </div>
                 </div>
@@ -41,6 +72,8 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
             <script src="js/script.js"></script>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGeyEi9UOUJy_FZlDtNn1bBkW0gefHjJE&libraries=places&callback=initAutocomplete" async defer></script>  
         </body>
 </html>
