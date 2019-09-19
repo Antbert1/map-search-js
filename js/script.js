@@ -11,7 +11,8 @@ function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 55.954093, lng: -3.188200},
       zoom: 12,
-      mapTypeId: 'roadmap'
+      mapTypeId: 'roadmap',
+      streetViewControl: false
     });
   
     // Create the search box and link it to the UI element.
@@ -39,6 +40,9 @@ function initAutocomplete() {
       $('.itemDetails').addClass('hidden');
       $('.placeholder').removeClass('hidden');
       searchTerm = this.innerText;
+      // if (searchTerm = "Women's Services") {
+      //   searchTerm = Women's Services OR Domestic abuse";
+      // } 
       $(input).val(searchTerm);
       google.maps.event.trigger(input, 'focus', {});
       google.maps.event.trigger(input, 'keydown', { keyCode: 13 });
@@ -79,7 +83,6 @@ function initAutocomplete() {
     searchBox.addListener('places_changed', searchMap.bind(this, "textBox"));
 
     function searchMap(test) {
-      debugger;
       var places = searchBox.getPlaces();
   
       if (places.length == 0) {
@@ -89,8 +92,6 @@ function initAutocomplete() {
       // Clear out the old markers.
       markers.forEach(function(marker) {
         marker.setMap(null);
-
-
       });
       markers = [];
   
@@ -202,3 +203,7 @@ function initAutocomplete() {
       // map.fitBounds(bounds);
     }
   }
+
+$(".contactButton").click(function() {
+  debugger;
+});

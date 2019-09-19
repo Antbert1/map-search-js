@@ -136,3 +136,40 @@
   .titleBold {
     font-weight: 600;
   }
+
+  .contactButton {
+    position: absolute;
+    bottom: 0;
+    right: 100px;
+    padding: 20px;
+    background: #c4ac3b;
+    color: white;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .suggestModalBackground {    
+    display: flex;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* margin: 0 auto; */
+    background: rgba(0,0,0,0.8);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .foreground {
+    width: 500px;
+    background: white;
+    color: black;
+    padding: 20px;
+  }
+
+  .requestTitle {
+    font-size: 1.2em;
+    font-weight: 600;
+    text-align: center;
+  }

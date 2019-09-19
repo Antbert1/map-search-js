@@ -65,6 +65,50 @@
                     </div>
                 </div>
             </div>
+            <div class="contactButton">
+                Got a Suggestion?
+            </div>
+
+            <div class="suggestModalBackground hideModal">
+                <div class="foreground">
+                    <div class="title">
+                        <div class="requestTitle">REQUESTS</div>
+                        Do you know of a service that isn't appearing? Fill in the form to let us know and we'll try our best to get the service added.
+                    
+                        <form name="contactform" method="post" action="submit-form">
+                            <div class="messages"></div>
+                            <div class="controls">
+            
+                                <div class="form-group">
+                                    <label for="first_name">Name</label>
+                                    <input id="form_name" type="text" name="first_name" maxlength="50" size="30" class="form-control" placeholder="Enter your name *" required="required" data-error="Firstname is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group">	
+                                    <label for="email">Email Address</label>
+                                    <input id="form_email" type="text" name="email" maxlength="80" size="30" class="form-control" placeholder="Enter your email *" required="required" data-error="Valid email is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+            
+            
+                                <div class="form-group">
+                                    <label for="comments">Message</label>
+                                    <textarea id="form_message" name="comments" maxlength="1000" cols="25" rows="6" class="form-control" placeholder="Type message here *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+            
+                      <!-- <div class="g-recaptcha" data-sitekey="6LfjePkSAAAAALAHmBmSN1B2EO_qtDAOskpliwTJ"></div> -->
+            
+            
+            
+                            <input type="submit" class="btn btn-success btn-send" value="Submit">
+            
+            
+                        </form>
+                    </div>
+                </div>
+            </div>
 
 
             
