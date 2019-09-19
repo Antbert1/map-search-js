@@ -10,7 +10,7 @@
 function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 55.954093, lng: -3.188200},
-      zoom: 13,
+      zoom: 12,
       mapTypeId: 'roadmap'
     });
   
@@ -28,7 +28,7 @@ function initAutocomplete() {
     // Bias the SearchBox results towards current map's viewport.
     map.addListener('bounds_changed', function() {
       searchBox.setBounds(defaultBounds);
-      searchBox.setBounds(map.getBounds());
+      //searchBox.setBounds(map.getBounds());
     });
 
 
@@ -190,15 +190,15 @@ function initAutocomplete() {
 
 
 
-        if (place.geometry.viewport) {
-          // Only geocodes have viewport.
-          bounds.union(place.geometry.viewport);
-        } else {
-          bounds.extend(place.geometry.location);
-        }
+        // if (place.geometry.viewport) {
+        //   // Only geocodes have viewport.
+        //   bounds.union(place.geometry.viewport);
+        // } else {
+        //   bounds.extend(place.geometry.location);
+        // }
       });
 
 
-      map.fitBounds(bounds);
+      // map.fitBounds(bounds);
     }
   }
