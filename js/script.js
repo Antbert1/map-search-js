@@ -35,6 +35,7 @@ function initAutocomplete() {
 
     /*List clicking*/
     $( ".listItem" ).click(function() {
+      infowindow.close();
       $('.listItem').removeClass('highlighted');
       $(this).addClass('highlighted');
       $('.itemDetails').addClass('hidden');

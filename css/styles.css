@@ -59,10 +59,10 @@
     font-family: Roboto;
     font-size: 15px;
     font-weight: 300;
-    margin-left: 12px;
+    /* margin-left: 12px;
     padding: 0 11px 0 13px;
     text-overflow: ellipsis;
-    width: 400px;
+    width: 400px; */
     visibility: hidden;
   }
   
@@ -172,4 +172,27 @@
     font-size: 1.2em;
     font-weight: 600;
     text-align: center;
+  }
+
+  .hideModal {
+    display: none;
+  }
+
+  .buttonOverride {
+    background: #c4ac3b !important;
+    border: #c4ac3b !important;
+  }
+
+
+  .dropdownBtn {
+    background: #5e83a1 !important;
+    color: white !important;
+    width: 100%;
+    text-align: left !important;
+    font-size: 1.2em !important;
+    font-weight: 600 !important;
+  }
+
+  .custom-list-item {
+    padding: 5px;
   }
