@@ -130,7 +130,7 @@
   }
 
   .hidden {
-    display: none;
+    display: none !important;
   }
 
   .titleBold {
