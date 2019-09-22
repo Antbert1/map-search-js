@@ -18,7 +18,15 @@
                     </div>
                 </div>
             </div>
+
             <div class="container">
+                <div class="row searchLocation">
+                    <div class="col-md-12">
+                        <div>Search for your location by city name or postcode</div>
+                        <input type="text" class="searchMapLocation">
+                        <a class="searchBtn">Go</a>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-12 map-container">
                         <div id="map"></div>
@@ -29,7 +37,7 @@
                 </div>
                 <div class="row listRow">
                     <div class="col-md-6">
-                        <!-- <div class="servicesBox">
+                        <div class="servicesBox servicesDesktop">
                             <div class="servicesBoxHeading">
                                 <h3>Available Services</h3>
                                 <p>Click on a service in the list below to see locations nearby on the map.</p>
@@ -42,7 +50,7 @@
                                 <li class="listItem odd">Community Services</li>
                                 <li class="listItem">Health and Counselling</li>
                             </ul>
-                        </div> -->
+                        </div>
 
                         <div class="servicesMobile dropdown">
                             <button class="btn dropdown-toggle dropdownBtn" type="button" data-toggle="dropdown">Available Services
@@ -60,7 +68,8 @@
 
                     </div>
                     <div class="col-md-6">
-                        <p class="placeholder">Click on map icons to show details</p>
+                        <p class="placeholder servicesDesktop">Click on map icons to show details</p>
+                        <p class="placeholder servicesMobile">Click on Available Services to get a list of options</p>
                         <div class="itemDetails hidden">
                             <p>
                                <span class="name titleBold"></span><span class="resourceName"></span>

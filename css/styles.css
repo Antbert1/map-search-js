@@ -196,3 +196,38 @@
   .custom-list-item {
     padding: 5px;
   }
+
+  .placeholder {
+    padding-top: 10px;
+  }
+
+  .searchBtn {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: #c4ac3b;
+    color: white !important;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .searchLocation {
+    padding-bottom: 20px;
+  }
+
+  /*Show/hide mobile and desktop stuff*/
+  .servicesMobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 767px){
+    .servicesMobile {
+      display: block;
+    }
+
+    .servicesDesktop {
+      display: none;
+    }
+  }

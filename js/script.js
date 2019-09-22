@@ -6,10 +6,30 @@
 // parameter when you first load the API. For example:
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
+$('.searchBtn').click(function() {
+  var inputVal = $('.searchMapLocation').val();
+  let request;
+  if (inputVal.length > 0) {
+    request = {
+      query: inputVal,
+      fields: ['geometry']
+    };
+
+    var serviceSearch = new google.maps.places.PlacesService(map);
+    serviceSearch.findPlaceFromQuery(request, function(results, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        centrePoint = results[0].geometry.location;
+        map.setCenter(centrePoint);
+      }
+    });
+  }
+});
 
 function initAutocomplete() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 55.954093, lng: -3.188200},
+    centrePoint = new google.maps.LatLng(55.954093, -3.188200)
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: centrePoint,
       zoom: 12,
       mapTypeId: 'roadmap',
       streetViewControl: false
@@ -19,32 +39,36 @@ function initAutocomplete() {
     var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
 
-    var defaultBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(56.013428, -3.393450),
-      new google.maps.LatLng(55.866235, -2.962197));
+    // var defaultBounds = new google.maps.LatLngBounds(
+    //   new google.maps.LatLng(56.013428, -3.393450),
+    //   new google.maps.LatLng(55.866235, -2.962197));
     
     //searchBox.setBounds(defaultBounds);
     //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
   
     // Bias the SearchBox results towards current map's viewport.
     map.addListener('bounds_changed', function() {
-      searchBox.setBounds(defaultBounds);
-      //searchBox.setBounds(map.getBounds());
+      //searchBox.setBounds(defaultBounds);
+      searchBox.setBounds(map.getBounds());
     });
 
 
     /*List clicking*/
     $( ".listItem" ).click(function() {
       infowindow.close();
+
       $('.listItem').removeClass('highlighted');
       $(this).addClass('highlighted');
       $('.itemDetails').addClass('hidden');
       $('.placeholder').removeClass('hidden');
+      $('.placeholder').text('Click on map icons to show details')
       searchTerm = this.innerText;
       // if (searchTerm = "Women's Services") {
       //   searchTerm = Women's Services OR Domestic abuse";
       // } 
       $(input).val(searchTerm);
+      //Set centre to current default lat lngs
+      map.setCenter(centrePoint);
       google.maps.event.trigger(input, 'focus', {});
       google.maps.event.trigger(input, 'keydown', { keyCode: 13 });
       google.maps.event.trigger(this, 'focus', {});
